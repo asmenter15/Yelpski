@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Yelpski</string>
+    <string name="BUSINESS_SEARCH">Business Search</string>
+    <string name="START_BY_TYPING_IN_SEARCH_BAR">Start by typing in the search bar</string>
+    <string name="SAN_DIEGO_BUSINESS_SEARCH">San Diego Business Search</string>
+    <string name="SEARCH">Search</string>
+    <string name="NO_REVIEWS">No Reviews</string>
+    <string name="NO_BUSINESSES_FOUND">No Businesses Found</string>
+    <string name="NO_BUSINESSES_FOUND_TRY_ANOTHER_SEARCH">No businesses found, try another search</string>
+</resources>
