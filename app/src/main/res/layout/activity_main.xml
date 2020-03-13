@@ -23,7 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/default_margin_half"
-            android:lines="1"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
             style="@style/Widget.AppCompat.EditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>

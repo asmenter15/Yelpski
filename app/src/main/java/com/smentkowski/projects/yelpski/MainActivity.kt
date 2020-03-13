@@ -18,10 +18,10 @@ import kotlinx.android.synthetic.main.list_item_business.view.*
 
 
 interface MainInterface {
-    fun searchEntered(searchTerm: String)
+    fun searchSubmitted(searchTerm: String)
 }
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainInterface {
 
     private val TAG = MainActivity::class.java.simpleName
 
@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        searchEditText.mainInterface = this
         mAdapter = BusinessListAdapter(this)
         businessRecyclerView.adapter = mAdapter
         layoutManager = LinearLayoutManager(this)
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val currentlyVisible = layoutManager!!.findLastCompletelyVisibleItemPosition()
-                if (currentlyVisible > 0.65 * mAdapter!!.businesses.size) {
+                if (currentlyVisible > 0.5 * mAdapter!!.businesses.size) {
                     nextSearchOffsetRequested()
                 }
             }
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun searchSubmitted(searchTerm: String) {
+    override fun searchSubmitted(searchTerm: String) {
         currentSearchTerm = searchTerm
         searchOffset = 0
 
