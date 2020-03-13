@@ -12,10 +12,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.*
 
-class WebService {
+const val YELP_API_URL = "https://api.yelp.com/"
+const val YELP_API_VERSION = "v3/"
 
-    val YELP_API_URL = "https://api.yelp.com/"
-    val YELP_API_VERSION = "v3/"
+class WebService {
 
     companion object {
         private var sWebService: WebService? = null

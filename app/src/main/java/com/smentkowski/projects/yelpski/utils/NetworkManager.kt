@@ -23,9 +23,6 @@ object NetworkManager {
 
                 // TODO: Migrate this to use RXKotlin so we don't have to wait on each request and block the UI in the meantime
 
-                Log.i(TAG,"term:" + searchTerm + " offset: " + offset + ":" + response.toString())
-                Log.i(TAG,"term:" + searchTerm + " offset: " + offset + ":" + response.body().toString())
-
                 var businessReviewsProcessedCounter = 0
                 val businesses = response.body()?.businesses
 
@@ -74,8 +71,6 @@ object NetworkManager {
             WebService.instance.yelpService.getBusinessReviews(BuildConfig.YELP_AUTH, businessId).enqueue(object: Callback<YelpBusinessReviewsResponse> {
                 override fun onResponse(call: Call<YelpBusinessReviewsResponse>, response: Response<YelpBusinessReviewsResponse>) {
                     var topReview: BusinessReview? = null
-
-                    Log.i(TAG,"bID:" + businessId + ":" + response.toString())
 
                     if (response.body() == null) {
                         retriesMod++

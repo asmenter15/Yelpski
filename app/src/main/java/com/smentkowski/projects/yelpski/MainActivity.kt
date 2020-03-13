@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val currentlyVisible = layoutManager!!.findLastCompletelyVisibleItemPosition()
-                if (currentlyVisible > 0.3 * mAdapter!!.businesses.size) {
+                if (currentlyVisible > 0.65 * mAdapter!!.businesses.size) {
                     nextSearchOffsetRequested()
                 }
             }
@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         val imm: InputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 
+        // If searchOffset is 0, we are doing initial search
         if (searchOffset == 0) {
             progressBar.visibility = View.VISIBLE
             businessRecyclerView.visibility = View.GONE
@@ -111,6 +112,8 @@ class MainActivity : AppCompatActivity() {
 
         noBusinessesContainer.visibility = View.VISIBLE
     }
+
+    // TODO: Future optimization add a loading cell for when a user gets to the bottom of the list and the next page hasn't loaded
 
     class BusinessListAdapter(private var context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
